@@ -16,7 +16,7 @@ class Field
     protected $label;
     protected $template;
 
-    protected static $defaultTemplate = '{field} <span class="badge badge-danger">{errors}</span>';
+    protected static $defaultTemplate = '{field} <span class="label label-danger">{errors}</span>';
 
     protected $attributes = [];
 
