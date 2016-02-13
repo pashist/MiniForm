@@ -1,0 +1,33 @@
+{
+  "name": "pashist/miniform",
+  "description": "Minimalistic PHP forms library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "pashist",
+      "email": "mistby@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.8.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "MiniForm\\": "src/MiniForm"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "MiniForm\\Tets\\": "tests/"
+    }
+  },
+  "scripts": {
+    "test": [
+      "php vendor/bin/phpunit"
+    ],
+    "phpunit": "php vendor/bin/phpunit"
+  }
+}
