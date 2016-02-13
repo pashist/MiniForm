@@ -192,7 +192,7 @@ class Form
 
     public function trigger($eventName)
     {
-        if ( ! isset($this->events[$eventName])) {
+        if (isset($this->events[$eventName])) {
             foreach ($this->events[$eventName] as $callable) {
                 $args = func_get_args();
                 array_shift($args);
