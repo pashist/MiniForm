@@ -9,7 +9,6 @@ class Form
     public $submitted = false;
     public $validated = false;
 
-    private $errors = [];
     private $hasErrors = false;
     private $method = 'post';
     private $action = '#';
@@ -97,16 +96,19 @@ class Form
         }
     }
 
-    public function addError($text)
+    public function getErrors()
     {
-        if ($text) {
-            $this->errors[] = Lang::trans($text);
+        $errors = [];
+        foreach ($this->fields as $field) {
+            $field->isValid() || $errors[$field->name] = $field->getErrors();
         }
+        return $errors;
     }
 
     public function validate()
     {
         $this->trigger('validate', $this);
+        $this->hasErrors = false;
         foreach ($this->fields as $field) {
             $field->validate();
             if ( ! $this->hasErrors && ! $field->isValid()) {
@@ -129,7 +131,6 @@ class Form
     public function html()
     {
         $html = "<form method='$this->method' action='$this->action' class='$this->class' enctype='$this->enctype'>";
-        $html .= isset($this->errors['form']) ? '<p class="form_error">' . $this->errors['form'] . '</p>' : '';
         foreach ($this->fields as $field) {
             $html .= $field->html();
         }
