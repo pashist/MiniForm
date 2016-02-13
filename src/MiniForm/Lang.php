@@ -23,7 +23,7 @@ class Lang
     {
         if (self::$translations === null) {
             $path = __DIR__ . DIRECTORY_SEPARATOR . 'i18n';
-            $file = $path . DIRECTORY_SEPARATOR . self::$lang;
+            $file = $path . DIRECTORY_SEPARATOR . self::$lang . '.php';
             if (is_readable($file) && is_file($file)) {
                 self::$translations = include($file);
             }
@@ -34,6 +34,6 @@ class Lang
     {
         self::loadTranslations();
         $trans =  isset(self::$translations[$text]) ? self::$translations[$text] : $text;
-        return sprintf($trans, func_get_args());
+        return call_user_func_array('sprintf', array_merge([$trans], array_slice(func_get_args(), 1)));
     }
 }

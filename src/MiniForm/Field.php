@@ -132,8 +132,9 @@ class Field
         return $this;
     }
 
-    public function submit($data)
+    public function submit($data = null)
     {
+        $data || $data = $_REQUEST;
         if ( ! $this->disabled) {
             $this->value = isset($data[$this->name]) ? $data[$this->name] : null;
         }

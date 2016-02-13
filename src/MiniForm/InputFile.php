@@ -7,8 +7,9 @@ class InputFile extends Input
     public $allowed = [];
     public $value;
 
-    public function submit()
+    public function submit($data = null)
     {
+        $data || $data = $_REQUEST;
         if ( ! $this->disabled) {
             isset($_FILES[$this->name]['name']) && $this->value = $_FILES[$this->name]['name'];
         }

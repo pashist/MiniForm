@@ -17,8 +17,9 @@ class Select extends Field
         });
     }
 
-    public function submit($data)
+    public function submit($data = null)
     {
+        $data || $data = $_REQUEST;
         if ($this->multiple) {
             $this->value = isset($data[$this->name]) ? (array)$data[$this->name] : [];
         } else {
