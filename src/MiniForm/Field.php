@@ -44,9 +44,9 @@ class Field
         $result = false;
         if ($this->required) {
             if ($this->values && ! $this->value) {
-                $result = 'SELECT_REQUIRED';
+                $result = Lang::trans('REQUIRED_SELECT');
             } elseif ( ! is_array($this->value) && ! strlen($this->value)) {
-                $result = 'INPUT_REQUIRED';
+                $result = Lang::trans('REQUIRED_INPUT');
             }
         }
 
@@ -57,7 +57,7 @@ class Field
     {
         $result = false;
         if ($this->pattern && strlen($this->value) && ! preg_match("~$this->pattern~", $this->value)) {
-            $result = 'PATTERN_MISMATCH';
+            $result = Lang::trans('PATTERN_MISMATCH');
         }
 
         return $result;

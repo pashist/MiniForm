@@ -128,6 +128,11 @@ class Form
         return ! $this->hasErrors;
     }
 
+    public function __toString()
+    {
+        return $this->html();
+    }
+
     public function html()
     {
         $html = "<form method='$this->method' action='$this->action' class='$this->class' enctype='$this->enctype'>";
